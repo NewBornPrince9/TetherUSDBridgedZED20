@@ -1,45 +1,135 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <link rel="icon" type="image/svg+xml" href="logo.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tether USD Bridged ZED20 (USDT.z)</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; text-align: center; }
-        .header { background: #26a17b; color: white; padding: 40px; border-radius: 10px; }
-        .contract-box { background: #f4f4f4; border: 1px dashed #26a17b; padding: 15px; margin: 20px 0; word-break: break-all; }
-        .btn { display: inline-block; background: #26a17b; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin: 5px; }
-        .details { text-align: left; margin: 20px 0; }
+        :root {
+            --primary-color: #26a17b;
+            --secondary-color: #f4f4f4;
+        }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            line-height: 1.6; 
+            color: #333; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background-color: #f9f9f9;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .header { 
+            background: var(--primary-color); 
+            color: white; 
+            padding: 50px 20px; 
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+        .logo-main {
+            width: 120px;
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+        .contract-box { 
+            background: var(--secondary-color); 
+            border: 2px dashed var(--primary-color); 
+            padding: 20px; 
+            margin: 25px 0; 
+            word-break: break-all;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .contract-box:hover {
+            background: #eef9f5;
+        }
+        .btn-group {
+            margin-top: 30px;
+        }
+        .btn { 
+            display: inline-block; 
+            background: var(--primary-color); 
+            color: white; 
+            padding: 12px 25px; 
+            text-decoration: none; 
+            border-radius: 30px; 
+            margin: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(38, 161, 123, 0.3);
+        }
+        .btn-pancake {
+            background: #d1884f;
+        }
+        .details { 
+            text-align: left; 
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 20px;
+            border-left: 5px solid var(--primary-color);
+            background: #fff;
+        }
+        footer { 
+            margin-top: 50px; 
+            font-size: 0.85em; 
+            color: #888;
+        }
     </style>
 </head>
 <body>
+
+<div class="container">
     <div class="header">
-        <div class="header">
-        <img src="Logo USDTz.png" alt="Logo USDT.z" style="width: 100px; height: auto; margin-bottom: 20px;">
-            
+        <img src="Logo USDTz.png" alt="Logo USDT.z" class="logo-main">
         <h1>Tether USD Bridged ZED20</h1>
-        <p>Standar Baru Aset Digital di BNB Smart Chain (ZED20)</p>
+        <p>Standar Protokol Aset Digital Terpercaya di Jaringan BNB Smart Chain</p>
     </div>
 
     <div class="details">
-        <h2>Detail Token</h2>
+        <h2>Informasi Token</h2>
         <p><strong>Nama:</strong> Tether USD Bridged ZED20</p>
         <p><strong>Simbol:</strong> USDT.z</p>
+        <p><strong>Desimal:</strong> 18</p>
         <p><strong>Total Supply:</strong> 27.500.000.000.000</p>
         <p><strong>Standar:</strong> ZED20 (BEP-20 Compatible)</p>
     </div>
 
-    <div class="contract-box">
+    <p>Klik alamat di bawah ini untuk menyalin:</p>
+    <div class="contract-box" id="contractAddr" onclick="copyContract()">
         <strong>Alamat Kontrak Resmi:</strong><br>
-        0x98bFef6C848279028dc95f21b2E8FF6Bf94D6B77
+        <span id="addrText">0x98bFef6C848279028dc95f21b2E8FF6Bf94D6B77</span>
     </div>
 
-    <a href="https://bscscan.com/token/0x98bfef6c848279028dc95f21b2e8ff6bf94d6b77" class="btn" target="_blank">Lihat di BscScan</a>
-    <a href="#" class="btn">Beli di PancakeSwap</a>
+    <div class="btn-group">
+        <a href="https://bscscan.com/token/0x98bfef6c848279028dc95f21b2e8ff6bf94d6b77" class="btn" target="_blank">Lihat di BscScan</a>
+        <a href="https://pancakeswap.finance/swap?outputCurrency=0x98bFef6C848279028dc95f21b2E8FF6Bf94D6B77" class="btn btn-pancake" target="_blank">Beli di PancakeSwap</a>
+    </div>
 
-    <footer style="margin-top: 50px; font-size: 0.8em;">
-        &copy; 2026 Tether USD Bridged ZED20 Project. All Rights Reserved.
+    <footer>
+        <p>&copy; 2026 Tether USD Bridged ZED20 Project. Memanfaatkan standar ZED20 untuk masa depan DeFi yang lebih baik.</p>
     </footer>
+</div>
+
+<script>
+    function copyContract() {
+        const addr = document.getElementById("addrText").innerText;
+        navigator.clipboard.writeText(addr).then(() => {
+            alert("Alamat kontrak berhasil disalin: " + addr);
+        });
+    }
+</script>
+
 </body>
 </html>
